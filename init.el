@@ -37,6 +37,7 @@
 
 ;;; list of packages installed
 ;; magit
+;; company
 
 ;; custom key bindings
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -44,3 +45,19 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings)) ; move between windows with shift and arrow keys
 
+;; custom set variables
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (company magit))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; company
+(add-hook 'after-init-hook 'global-company-mode)

@@ -7,11 +7,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-;; export environment variables
-(load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
-(exec-path-from-shell-copy-env "LC_ALL")
-(exec-path-from-shell-copy-env "LANG")
-
 ;; customize frame
 ;;; set up custom theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs/")
@@ -73,6 +68,11 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; set up r
+;; export environment variables to avoid r resorting to C
+;; LC_ALL and LANG are set in .bashrc
+(load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
+(exec-path-from-shell-copy-env "LC_ALL")
+(exec-path-from-shell-copy-env "LANG")
 ;; stolen from http://stackoverflow.com/questions/2901198/useful-keyboard-shortcuts-and-tips-for-ess-r
 ;;; control and up/down arrow keys to search history with matching what you've already typed
 (define-key comint-mode-map [C-up] 'comint-previous-matching-input-from-input)

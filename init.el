@@ -20,16 +20,20 @@
 ;;; remove tool bar
 (tool-bar-mode -1)
 ;;; remove scroll bar
-(toggle-scroll-bar -1) 
+(toggle-scroll-bar -1)
 ;;; set fringe color to same as background
 (set-face-attribute 'fringe nil
 		    :foreground (face-foreground 'default)
 		    :background (face-background 'default))
 ;;; set color of vertical window divider to same as theme background
-(set-face-attribute 'vertical-border nil 
+(set-face-attribute 'vertical-border nil
 		    :foreground (face-background 'default))
 ;;; change default font size
-(set-face-attribute 'default (selected-frame) :height 100) 
+(set-face-attribute 'default (selected-frame) :height 100)
+;;; enable electric pair mode for all buffers
+(electric-pair-mode)
+;;; enable row highlighting
+(global-hl-line-mode)
 
 ;; add package repository
 (require 'package)
@@ -42,7 +46,7 @@
 ;; custom key bindings
 (global-set-key (kbd "C-x g") 'magit-status)
 ;;; right option as option
-(setq mac-right-option-modifier 'mac-right-option) 
+(setq mac-right-option-modifier 'mac-right-option)
 ;;; move between windows with shift and arrow keys
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))

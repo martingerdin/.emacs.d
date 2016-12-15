@@ -7,6 +7,11 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; export environment variables
+(load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
+(exec-path-from-shell-copy-env "LC_ALL")
+(exec-path-from-shell-copy-env "LANG")
+
 ;; customize frame
 ;;; set up custom theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs/")
@@ -41,9 +46,14 @@
 
 ;; custom key bindings
 (global-set-key (kbd "C-x g") 'magit-status)
-(setq mac-right-option-modifier 'mac-right-option) ; right option as option
+;;; right option as option
+(setq mac-right-option-modifier 'mac-right-option) 
+;;; move between windows with shift and arrow keys
 (when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings)) ; move between windows with shift and arrow keys
+  (windmove-default-keybindings))
+;;; save with C-s instead of C-x C-s
+(global-set-key (kbd "C-s") 'save-buffer)
+
 
 ;; custom set variables
 (custom-set-variables
@@ -61,3 +71,19 @@
 
 ;; company
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; set up r
+;; stolen from http://stackoverflow.com/questions/2901198/useful-keyboard-shortcuts-and-tips-for-ess-r
+;;; control and up/down arrow keys to search history with matching what you've already typed
+(define-key comint-mode-map [C-up] 'comint-previous-matching-input-from-input)
+(define-key comint-mode-map [C-down] 'comint-next-matching-input-from-input)
+;;; comment-uncomment a selected region with C-d or C-maj-d
+(defun uncomment-region (beg end)
+  "Like `comment-region' invoked with a C-u prefix arg."
+  (interactive "r")
+  (comment-region beg end -1))
+(define-key ess-mode-map (kbd "C-d") 'comment-region)
+(define-key ess-mode-map (kbd "C-S-d") 'uncomment-region)
+(define-key ess-mode-map "\C-l" 'ess-eval-line-and-step)
+(define-key ess-mode-map "\C-p" 'ess-eval-function-or-paragraph-and-step)
+(define-key ess-mode-map "\C-r" 'ess-eval-region)

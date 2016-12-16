@@ -40,8 +40,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 ;;; list of packages installed
-;; magit
 ;; company
+;; exec-path-from-shell
+;; magit
 
 ;; custom key bindings
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -52,7 +53,6 @@
   (windmove-default-keybindings))
 ;;; save with C-s instead of C-x C-s
 (global-set-key (kbd "C-s") 'save-buffer)
-
 
 ;; custom set variables
 (custom-set-variables

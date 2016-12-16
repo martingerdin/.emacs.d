@@ -1,6 +1,5 @@
 # Owl station
-My .emacs.d, including the packages and config I use. Nothing terribly
-advanced.
+My .emacs.d.
 
 ## Theme
 [Zenburn](https://github.com/bbatsov/zenburn-emacs)

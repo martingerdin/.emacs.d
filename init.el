@@ -35,6 +35,12 @@
 ;;; enable row highlighting
 (global-hl-line-mode)
 
+;; hooks
+;;; disable auto-fill-mode in fundamental mode
+(add-hook 'fundamental-mode-hook (lambda () (auto-fill-mode -1)))
+;;; enable auto-revert-mode in doc-view-mode
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
 ;; add package repository
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))

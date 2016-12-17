@@ -1,11 +1,26 @@
 ;; my emacs init file
-;;; add package sources
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; the following four sections need to go in this order
+;;; 1. require package
+(require 'package)
+;;; 2. add melpa to package archives
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;;; 3. initialize package
 (package-initialize)
+
+;;; list of packages installed
+;; company
+;; exec-path-from-shell
+;; magit
+;; pdf-tools
+
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; pdf-tools
+(pdf-tools-install)
+;;; make pdf files open in pdf-view-mode
+(add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;; customize frame
 ;;; set up custom theme
@@ -40,15 +55,8 @@
 (add-hook 'fundamental-mode-hook (lambda () (auto-fill-mode -1)))
 ;;; enable auto-revert-mode in doc-view-mode
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-
-;; add package repository
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
-;;; list of packages installed
-;; company
-;; exec-path-from-shell
-;; magit
+;;; and in pdf-view-mode
+(add-hook 'pdf-view-mode-hook 'auto-revert-mode)
 
 ;; custom key bindings
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -66,16 +74,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (company magit))))
+ '(package-selected-packages (quote (pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; company
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;; set up r
 ;; export environment variables to avoid r resorting to C

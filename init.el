@@ -14,13 +14,26 @@
 ;; magit
 ;; pdf-tools
 
+;; auctex
+;;; enable parse on load
+(setq TeX-parse-self t)
+;;; enable parse on save
+(setq TeX-auto-save t)
+
 ;; company
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; pdf-tools
+;; requires the following to be put in .bashrc
+;; $ export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+;;; install pdf-tools
 (pdf-tools-install)
 ;;; make pdf files open in pdf-view-mode
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
+
+;; reftex
+;;; so that reftex finds my bibtex library
+(setq reftex-default-bibliography '("~/Documents/research/bibtex/library.bib"))
 
 ;; customize frame
 ;;; set up custom theme
@@ -66,7 +79,7 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 ;;; save with C-s instead of C-x C-s
-(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-x s") 'save-buffer)
 
 ;; custom set variables
 (custom-set-variables

@@ -10,6 +10,7 @@
 
 ;;; list of packages installed
 ;; company
+;; company-statistics
 ;; exec-path-from-shell
 ;; magit
 ;; pdf-tools
@@ -22,6 +23,20 @@
 
 ;; company
 (add-hook 'after-init-hook 'global-company-mode)
+;;; tell company not to downcase by default
+(setq company-dabbrev-downcase 0)
+;;; set the timer to 0.05, to make suggestions appear faster
+(setq company-idle-delay 0.05)
+;;; manually complete with C-tab
+(defun complete-or-indent ()
+    (interactive)
+    (if (company-manual-begin)
+        (company-complete-common)
+      (indent-according-to-mode)))
+(global-set-key [C-tab] 'complete-or-indent)
+
+;; company-statistics
+(add-hook 'after-init-hook 'company-statistics-mode)
 
 ;; pdf-tools
 ;; requires the following to be put in .bashrc
@@ -87,7 +102,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (pdf-tools company magit))))
+ '(package-selected-packages (quote (company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

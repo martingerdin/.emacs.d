@@ -1,0 +1,6 @@
+[submodule "addins/yasnippet"]
+	path = addins/yasnippet
+	url = https://github.com/joaotavora/yasnippet
+[submodule "addins/company-auctex"]
+	path = addins/company-auctex
+	url = https://github.com/alexeyr/company-auctex.git

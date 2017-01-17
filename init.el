@@ -10,10 +10,16 @@
 
 ;;; list of packages installed
 ;; company
+;; company-auctex
 ;; company-statistics
 ;; exec-path-from-shell
 ;; magit
 ;; pdf-tools
+;; yasnippet
+
+;; add to load path
+(add-to-list 'load-path "~/.emacs.d/addins/company-auctex/")
+(add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
 
 ;; auctex
 ;;; enable parse on load
@@ -35,8 +41,16 @@
       (indent-according-to-mode)))
 (global-set-key [C-tab] 'complete-or-indent)
 
+;; company-auctex
+(require 'company-auctex)
+(company-auctex-init)
+
 ;; company-statistics
 (add-hook 'after-init-hook 'company-statistics-mode)
+
+;; exec-path-from-shell
+(load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
+(exec-path-from-shell-initialize)
 
 ;; pdf-tools
 ;; requires the following to be put in .bashrc
@@ -102,7 +116,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (company-statistics pdf-tools company magit))))
+ '(package-selected-packages
+   (quote
+    (yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -111,11 +127,8 @@
  )
 
 ;; set up r
-;; export environment variables to avoid r resorting to C
-;; LC_ALL and LANG are set in .bashrc
-(load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
-(exec-path-from-shell-copy-env "LC_ALL")
-(exec-path-from-shell-copy-env "LANG")
+;; set LANG to avoid r resorting to C
+(setenv "LANG" "en_US.UTF-8")
 ;; stolen from http://stackoverflow.com/questions/2901198/useful-keyboard-shortcuts-and-tips-for-ess-r
 ;;; control and up/down arrow keys to search history with matching what you've already typed
 (define-key comint-mode-map [C-up] 'comint-previous-matching-input-from-input)

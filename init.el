@@ -138,11 +138,11 @@
   "Like `comment-region' invoked with a C-u prefix arg."
   (interactive "r")
   (comment-region beg end -1))
-(define-key ess-mode-map (kbd "C-d") 'comment-region)
+(define-key ess-mode-map (kbd "C-x d") 'comment-region)
 (define-key ess-mode-map (kbd "C-S-d") 'uncomment-region)
-(define-key ess-mode-map "\C-l" 'ess-eval-line-and-step)
-(define-key ess-mode-map "\C-p" 'ess-eval-function-or-paragraph-and-step)
-(define-key ess-mode-map "\C-r" 'ess-eval-region)
+(define-key ess-mode-map "C-x l" 'ess-eval-line-and-step)
+(define-key ess-mode-map "C-x p" 'ess-eval-function-or-paragraph-and-step)
+(define-key ess-mode-map "C-x r" 'ess-eval-region)
 
 ;; set up tex engine
 (setq-default TeX-engine 'xetex)

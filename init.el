@@ -52,6 +52,10 @@
 (load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
 (exec-path-from-shell-initialize)
 
+;; org-mode
+;;; setup files ending in “.csv” to open in org-mode
+(add-to-list 'auto-mode-alist '("\\.csv\\'" . org-mode))
+
 ;; pdf-tools
 ;; requires the following to be put in .bashrc
 ;; $ export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
@@ -95,19 +99,24 @@
 ;; hooks
 ;;; disable auto-fill-mode in fundamental mode
 (add-hook 'fundamental-mode-hook (lambda () (auto-fill-mode -1)))
+;;; and in latex mode
+(add-hook 'latex-mode-hook (lambda () (auto-fill-mode -1)))
+;;; and in org mode
+(add-hook 'org-mode-hook (lambda () (auto-fill-mode -1)))
 ;;; enable auto-revert-mode in doc-view-mode
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 ;;; and in pdf-view-mode
 (add-hook 'pdf-view-mode-hook 'auto-revert-mode)
 
 ;; custom key bindings
+;;; C-x g to open magit status buffer
 (global-set-key (kbd "C-x g") 'magit-status)
 ;;; right option as option
 (setq mac-right-option-modifier 'mac-right-option)
 ;;; move between windows with shift and arrow keys
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
-;;; save with C-s instead of C-x C-s
+;;; save with C-x s instead of C-x C-s
 (global-set-key (kbd "C-x s") 'save-buffer)
 
 ;; custom set variables

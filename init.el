@@ -99,14 +99,16 @@
 ;; hooks
 ;;; disable auto-fill-mode in fundamental mode
 (add-hook 'fundamental-mode-hook (lambda () (auto-fill-mode -1)))
-;;; and in latex mode
+;;; and in latex-mode
 (add-hook 'latex-mode-hook (lambda () (auto-fill-mode -1)))
-;;; and in org mode
+;;; and in org-mode
 (add-hook 'org-mode-hook (lambda () (auto-fill-mode -1)))
 ;;; enable auto-revert-mode in doc-view-mode
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 ;;; and in pdf-view-mode
 (add-hook 'pdf-view-mode-hook 'auto-revert-mode)
+;;; enable linum-mode for all new files
+(add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ;; custom key bindings
 ;;; C-x g to open magit status buffer
@@ -125,6 +127,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-table-convert-region-max-lines 9999)
  '(package-selected-packages
    (quote
     (yasnippet company-auctex company-statistics pdf-tools company magit))))

@@ -9,4 +9,5 @@
 * [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
 * [Magit](https://magit.vc)
 * [pdf-tools](https://github.com/politza/pdf-tools)
+* [yasnippet](https://github.com/joaotavora/yasnippet)
 

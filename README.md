@@ -7,6 +7,7 @@
 * [company-mode](http://company-mode.github.io)
 * [company-statistics](https://github.com/company-mode/company-statistics)
 * [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
+* [let-alist](https://elpa.gnu.org/packages/let-alist.html)
 * [Magit](https://magit.vc)
 * [pdf-tools](https://github.com/politza/pdf-tools)
 * [yasnippet](https://github.com/joaotavora/yasnippet)

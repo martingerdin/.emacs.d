@@ -1,5 +1,9 @@
 ;; my emacs init file
 
+;; add to load path
+(add-to-list 'load-path "~/.emacs.d/addins/company-auctex/")
+(add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
+
 ;; the following four sections need to go in this order
 ;;; 1. require package
 (require 'package)
@@ -7,6 +11,23 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 ;;; 3. initialize package
 (package-initialize)
+
+;; custom set variables
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-table-convert-region-max-lines 9999)
+ '(package-selected-packages
+   (quote
+    (yasnippet company-auctex company-statistics pdf-tools company magit))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;;; list of packages installed
 ;; company
@@ -16,10 +37,6 @@
 ;; magit
 ;; pdf-tools
 ;; yasnippet
-
-;; add to load path
-(add-to-list 'load-path "~/.emacs.d/addins/company-auctex/")
-(add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
 
 ;; auctex
 ;;; enable parse on load
@@ -115,28 +132,15 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 ;;; right option as option
 (setq mac-right-option-modifier 'mac-right-option)
-;;; move between windows with shift and arrow keys
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
+;; change keybindings to move around windows easier
+(define-prefix-command 'my-prefix-map)
+(define-key global-map (kbd "C-'") 'my-prefix-map)
+(define-key my-prefix-map (kbd "C-w") 'windmove-up)
+(define-key my-prefix-map (kbd "C-x") 'windmove-down)
+(define-key my-prefix-map (kbd "C-a") 'windmove-left)
+(define-key my-prefix-map (kbd "C-d") 'windmove-right)
 ;;; save with C-x s instead of C-x C-s
 (global-set-key (kbd "C-x s") 'save-buffer)
-
-;; custom set variables
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-table-convert-region-max-lines 9999)
- '(package-selected-packages
-   (quote
-    (yasnippet company-auctex company-statistics pdf-tools company magit))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; set up r
 ;; set LANG to avoid r resorting to C

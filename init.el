@@ -97,18 +97,18 @@
 ;;; setup files ending in “.csv” to open in org-mode
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . org-mode))
 
-;; pdf-tools
+;; pdf-tools, kept in case pdf-tools starts supporting retina displays
 ;; may require (pdf-tools-install to be run when started on new machine, to build server)
 ;; requires the following to be put in .bashrc
 ;; $ export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 ;;; install pdf-tools
 (pdf-tools-install)
-;;; make pdf files open in pdf-view-mode
-(add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
+;;; make pdf files open in pdf-view-mode 
+;;; (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;; reftex
 ;;; so that reftex finds my bibtex library
-(setq reftex-default-bibliography '("~/Documents/research/bibtex/library.bib"))
+(setq reftex-default-bibliography '("~/Documents/research/temporary/bibtex/library.bib"))
 
 ;; customize frame
 ;;; set up custom theme

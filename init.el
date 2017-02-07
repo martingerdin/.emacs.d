@@ -37,7 +37,7 @@
  '(org-table-convert-region-max-lines 9999)
  '(package-selected-packages
    (quote
-    (yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,6 +51,7 @@
 ;; company-statistics
 ;; exec-path-from-shell
 ;; magit
+;; markdown-mode
 ;; pdf-tools
 ;; yasnippet
 

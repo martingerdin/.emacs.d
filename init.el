@@ -1,8 +1,24 @@
 ;; my emacs init file
 
+;; current machine
+;; MacBook Pro (Retina, 15-inch, Mid 2014)
+;; 2,8 GHz Intel Core i7 processor
+;; 16 GB 1600 MHz DDR3 memory
+;; OS X El Capitan version 10.11.4
+
+;; current emacs version
+;; GNU Emacs 25.2.1 (x86_64-apple-darwin13.4.0, Carbon Version 157 AppKit 1265.21) of 2017-02-05
+;; from https://github.com/railwaycat/homebrew-emacsmacport
+;; installed using brew cask to help spotlight find it
+
+;; start with shell only
+(shell)
+(delete-other-windows)
+
 ;; add to load path
 (add-to-list 'load-path "~/.emacs.d/addins/company-auctex/")
 (add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
+(add-to-list 'load-path "/usr/local/opt/emacs-mac/share/emacs/site-lisp/ess/")
 
 ;; the following four sections need to go in this order
 ;;; 1. require package
@@ -65,15 +81,22 @@
 ;; company-statistics
 (add-hook 'after-init-hook 'company-statistics-mode)
 
+;; ess
+(require 'ess-site)
+
 ;; exec-path-from-shell
 (load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
 (exec-path-from-shell-initialize)
+
+;; latex-mode
+(setq LaTeX-reftex-cite-format-auto-activate nil)
 
 ;; org-mode
 ;;; setup files ending in “.csv” to open in org-mode
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . org-mode))
 
 ;; pdf-tools
+;; may require (pdf-tools-install to be run when started on new machine, to build server)
 ;; requires the following to be put in .bashrc
 ;; $ export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 ;;; install pdf-tools
@@ -112,6 +135,8 @@
 (electric-pair-mode)
 ;;; enable row highlighting
 (global-hl-line-mode)
+;; change default font to courier
+(set-face-font 'default "-outline-Courier New-normal-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
 
 ;; hooks
 ;;; disable auto-fill-mode in fundamental mode
@@ -128,10 +153,16 @@
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ;; custom key bindings
+;;; C-x SPC to enable rectangle-mark-mode
+(global-set-key (kbd "C-x SPC") 'rectangle-mark-mode)
 ;;; C-x g to open magit status buffer
 (global-set-key (kbd "C-x g") 'magit-status)
+;;; C-d to delete-forward-char
+(global-set-key (kbd "C-d") 'delete-forward-char)
 ;;; right option as option
 (setq mac-right-option-modifier 'mac-right-option)
+;;; left option as meta
+(setq mac-option-modifier 'meta)
 ;; change keybindings to move around windows easier
 (define-prefix-command 'my-prefix-map)
 (define-key global-map (kbd "C-'") 'my-prefix-map)

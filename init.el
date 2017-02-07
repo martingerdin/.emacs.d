@@ -49,6 +49,7 @@
 ;; company
 ;; company-auctex
 ;; company-statistics
+;; ess
 ;; exec-path-from-shell
 ;; magit
 ;; markdown-mode

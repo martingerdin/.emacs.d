@@ -14,6 +14,7 @@ OS X El Capitan version 10.11.4
 ## Packages
 * [company-mode](http://company-mode.github.io)
 * [company-statistics](https://github.com/company-mode/company-statistics)
+* [ESS](https://ess.r-project.org/)
 * [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
 * [let-alist](https://elpa.gnu.org/packages/let-alist.html)
 * [Magit](https://magit.vc)

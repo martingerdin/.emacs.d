@@ -110,6 +110,12 @@
 ;;; so that reftex finds my bibtex library
 (setq reftex-default-bibliography '("~/Documents/research/temporary/bibtex/library.bib"))
 
+;; show-paren-mode
+;;; set delay to 0
+(setq show-paren-delay 0)
+;;; global on
+(show-paren-mode 1)
+
 ;; customize frame
 ;;; set up custom theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs/")

@@ -37,7 +37,6 @@
  '(org-table-convert-region-max-lines 9999)
  '(package-selected-packages
    (quote
-    (markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
     (fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -102,6 +101,8 @@
 
 ;; latex-mode
 (setq LaTeX-reftex-cite-format-auto-activate nil)
+;;; setup files ending in ".Rtex" to open in latex-mode
+(add-to-list 'auto-mode-alist '("\\.Rtex\\'" . latex-mode))
 
 ;; org-mode
 ;;; setup files ending in “.csv” to open in org-mode
@@ -112,7 +113,6 @@
 ;; requires the following to be put in .bashrc
 ;; $ export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 ;;; install pdf-tools
-(pdf-tools-install)
 ;;; (pdf-tools-install)
 ;;; make pdf files open in pdf-view-mode 
 ;;; (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
@@ -131,8 +131,6 @@
 ;;; set up custom theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs/")
 (load-theme 'zenburn t)
-;;; start in fullscreen mode
-(toggle-frame-fullscreen)
 ;;; inhibit startup screen
 (setq inhibit-startup-screen t)
 ;;; remove menu bar
@@ -213,5 +211,6 @@
 ;; set up tex engine
 (setq-default TeX-engine 'xetex)
 (setq-default TeX-PDF-mode t)
+
 ;;; start in fullscreen mode
 (toggle-frame-fullscreen)

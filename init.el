@@ -113,6 +113,7 @@
 ;; $ export PKG_CONFIG_PATH=/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 ;;; install pdf-tools
 (pdf-tools-install)
+;;; (pdf-tools-install)
 ;;; make pdf files open in pdf-view-mode 
 ;;; (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 

@@ -38,6 +38,7 @@
  '(package-selected-packages
    (quote
     (markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,6 +52,7 @@
 ;; company-statistics
 ;; ess
 ;; exec-path-from-shell
+;; fill-column-indicator
 ;; magit
 ;; markdown-mode
 ;; pdf-tools
@@ -89,6 +91,14 @@
 ;; exec-path-from-shell
 (load "~/.emacs.d/addins/exec-path-from-shell/exec-path-from-shell.el")
 (exec-path-from-shell-initialize)
+
+;; fill-column
+(setq-default fill-column 80)
+
+;; fill-column-indicator
+(require 'fill-column-indicator)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 
 ;; latex-mode
 (setq LaTeX-reftex-cite-format-auto-activate nil)
@@ -202,3 +212,5 @@
 ;; set up tex engine
 (setq-default TeX-engine 'xetex)
 (setq-default TeX-PDF-mode t)
+;;; start in fullscreen mode
+(toggle-frame-fullscreen)

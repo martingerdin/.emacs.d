@@ -16,6 +16,7 @@ OS X El Capitan version 10.11.4
 * [company-statistics](https://github.com/company-mode/company-statistics)
 * [ESS](https://ess.r-project.org/)
 * [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
+* [fill-column-indicator](https://github.com/alpaker/Fill-Column-Indicator)
 * [let-alist](https://elpa.gnu.org/packages/let-alist.html)
 * [Magit](https://magit.vc)
 * [markdown-mode](https://github.com/jrblevin/markdown-mode)

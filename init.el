@@ -42,7 +42,7 @@
  '(org-table-convert-region-max-lines 9999)
  '(package-selected-packages
    (quote
-    (auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,6 +59,7 @@
 ;; fill-column-indicator
 ;; magit
 ;; markdown-mode
+;; outshine
 ;; pdf-tools
 ;; polymode
 ;; yasnippet
@@ -113,9 +114,19 @@
 (add-to-list 'auto-mode-alist '("\\.Rtex\\'" . latex-mode))
 
 ;; org-mode
-;;; customi
 ;;; setup files ending in “.csv” to open in org-mode
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . org-mode))
+
+;; outshine
+;;; set outshine prefix key
+(defvar outline-minor-mode-prefix "\M-#")
+;;; require and add hook
+(require 'outshine)
+(add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+;;; add outline minor mode to latex-mode
+(add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+;;; use org-mode's speed keys
+(setq outshine-use-speed-commands t)
 
 ;; pdf-tools, kept in case pdf-tools starts supporting retina displays
 ;; may require (pdf-tools-install to be run when started on new machine, to build server)

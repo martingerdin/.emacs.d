@@ -138,6 +138,8 @@
 ;;; (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;; reftex
+;;; add reftex to latex mode
+(add-hook 'LaTeX-mode-hook 'reftex-mode)
 ;;; so that reftex finds my bibtex library
 (setq reftex-default-bibliography '("~/Documents/research/temporary/bibtex/library.bib"))
 

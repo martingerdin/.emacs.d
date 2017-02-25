@@ -12,6 +12,7 @@ OS X El Capitan version 10.11.4
 [Zenburn](https://github.com/bbatsov/zenburn-emacs)
 
 ## Packages
+* [AUCTeX](https://www.gnu.org/software/auctex/)
 * [company-mode](http://company-mode.github.io)
 * [company-statistics](https://github.com/company-mode/company-statistics)
 * [ESS](https://ess.r-project.org/)
@@ -21,5 +22,6 @@ OS X El Capitan version 10.11.4
 * [Magit](https://magit.vc)
 * [markdown-mode](https://github.com/jrblevin/markdown-mode)
 * [pdf-tools](https://github.com/politza/pdf-tools)
+* [polymode](https://github.com/vspinu/polymode)
 * [yasnippet](https://github.com/joaotavora/yasnippet)
 

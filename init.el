@@ -18,6 +18,8 @@
 ;; add to load path
 (add-to-list 'load-path "~/.emacs.d/addins/company-auctex/")
 (add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/addins/polymode")
+(add-to-list 'load-path "~/.emacs.d/addins/polymode/modes")
 (add-to-list 'load-path "/usr/local/opt/emacs-mac/share/emacs/site-lisp/ess/")
 
 ;; the following four sections need to go in this order
@@ -58,6 +60,7 @@
 ;; magit
 ;; markdown-mode
 ;; pdf-tools
+;; polymode
 ;; yasnippet
 
 ;; auctex

@@ -34,10 +34,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/Documents/research/temporary/studies-and-projects/current/institutional-implementation-audit-filters/docs/protocol/protocol-institutional-implementation-audit-filters.org")))
  '(org-table-convert-region-max-lines 9999)
  '(package-selected-packages
    (quote
-    (fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -62,6 +65,8 @@
 (setq TeX-parse-self t)
 ;;; enable parse on save
 (setq TeX-auto-save t)
+;;; set TeX master to nil
+(setq-default TeX-master nil)
 
 ;; company
 (add-hook 'after-init-hook 'global-company-mode)
@@ -105,6 +110,7 @@
 (add-to-list 'auto-mode-alist '("\\.Rtex\\'" . latex-mode))
 
 ;; org-mode
+;;; customi
 ;;; setup files ending in “.csv” to open in org-mode
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . org-mode))
 
@@ -170,6 +176,9 @@
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ;; custom key bindings
+;;; org-mode store and insert link
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c C-l") 'org-insert-link)
 ;;; C-x SPC to enable rectangle-mark-mode
 (global-set-key (kbd "C-x SPC") 'rectangle-mark-mode)
 ;;; C-x g to open magit status buffer

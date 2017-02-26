@@ -42,7 +42,7 @@
  '(org-table-convert-region-max-lines 9999)
  '(package-selected-packages
    (quote
-    (outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,6 +59,7 @@
 ;; fill-column-indicator
 ;; magit
 ;; markdown-mode
+;; navi-mode
 ;; outshine
 ;; pdf-tools
 ;; polymode
@@ -108,10 +109,13 @@
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
 
-;; latex-mode
+;; LaTeX-mode
 (setq LaTeX-reftex-cite-format-auto-activate nil)
 ;;; setup files ending in ".Rtex" to open in latex-mode
-(add-to-list 'auto-mode-alist '("\\.Rtex\\'" . latex-mode))
+(add-to-list 'auto-mode-alist '("\\.Rtex\\'" . LaTeX-mode))
+
+;; navi-mode
+(require 'navi-mode)
 
 ;; org-mode
 ;;; setup files ending in “.csv” to open in org-mode
@@ -123,8 +127,6 @@
 ;;; require and add hook
 (require 'outshine)
 (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
-;;; add outline minor mode to latex-mode
-(add-hook 'LaTeX-mode-hook 'outline-minor-mode)
 ;;; use org-mode's speed keys
 (setq outshine-use-speed-commands t)
 
@@ -178,6 +180,8 @@
 (set-face-font 'default "-outline-Courier New-normal-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
 
 ;; hooks
+;;; add outline minor mode to LaTeX-mode
+(add-hook 'LaTeX-mode-hook 'outline-minor-mode)
 ;;; disable auto-fill-mode in fundamental mode
 (add-hook 'fundamental-mode-hook (lambda () (auto-fill-mode -1)))
 ;;; and in latex-mode
@@ -192,6 +196,8 @@
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ;; custom key bindings
+;;; bind comment-or-uncomment-region to M-c
+(global-set-key (kbd "M-c") 'comment-or-uncomment-region)
 ;;; org-mode store and insert link
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c C-l") 'org-insert-link)

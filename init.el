@@ -36,10 +36,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/Documents/research/temporary/studies-and-projects/current/institutional-implementation-audit-filters/docs/protocol/protocol-institutional-implementation-audit-filters.org")))
  '(org-table-convert-region-max-lines 9999)
+ '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
     (navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
@@ -120,6 +118,9 @@
 ;; org-mode
 ;;; setup files ending in “.csv” to open in org-mode
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . org-mode))
+;;; save clock history across emac sessions
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
 
 ;; outshine
 ;;; set outshine prefix key
@@ -245,3 +246,4 @@
 
 ;;; start in fullscreen mode
 (toggle-frame-fullscreen)
+(put 'upcase-region 'disabled nil)

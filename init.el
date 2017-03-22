@@ -92,6 +92,9 @@
 ;; company-statistics
 (add-hook 'after-init-hook 'company-statistics-mode)
 
+;; doc-view
+(setq doc-view-resolution 300)
+
 ;; ess
 (require 'ess-site)
 

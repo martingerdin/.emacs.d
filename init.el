@@ -125,6 +125,15 @@
 ;;; save clock history across emac sessions
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
+;;; make window shifting work also in org mode
+(add-hook 'org-mode-hook 
+	  (lambda ()
+	    (define-prefix-command 'my-prefix-map)
+	    (define-key org-mode-map (kbd "C-'") 'my-prefix-map)
+	    (define-key my-prefix-map (kbd "C-w") 'windmove-up)
+	    (define-key my-prefix-map (kbd "C-x") 'windmove-down)
+	    (define-key my-prefix-map (kbd "C-a") 'windmove-left)
+	    (define-key my-prefix-map (kbd "C-d") 'windmove-right)))
 
 ;; outshine
 ;;; set outshine prefix key
@@ -255,3 +264,4 @@
 ;;; start in fullscreen mode
 (toggle-frame-fullscreen)
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

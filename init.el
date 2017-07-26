@@ -156,6 +156,10 @@
 ;;; global on
 (show-paren-mode 1)
 
+;; stata
+(setq inferior-STA-program-name
+      "/Applications/Stata/StataMP.app/Contents/MacOS/stata-mp")
+
 ;; customize frame
 ;;; set up custom theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs/")
@@ -198,7 +202,7 @@
 ;;; and in pdf-view-mode
 (add-hook 'pdf-view-mode-hook 'auto-revert-mode)
 ;;; enable linum-mode for all new files
-(add-hook 'find-file-hook (lambda () (linum-mode 1)))
+; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ;; custom key bindings
 ;;; bind comment-or-uncomment-region to M-c

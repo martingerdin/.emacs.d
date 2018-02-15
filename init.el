@@ -20,13 +20,17 @@
 (add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/addins/polymode")
 (add-to-list 'load-path "~/.emacs.d/addins/polymode/modes")
+(add-to-list 'load-path "~/.emacs.d/org/org-mode/lisp")
 (add-to-list 'load-path "/usr/local/opt/emacs-mac/share/emacs/site-lisp/ess/")
 
 ;; the following four sections need to go in this order
 ;;; 1. require package
 (require 'package)
-;;; 2. add melpa to package archives
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;;; 2. add to package archives
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
 ;;; 3. initialize package
 (package-initialize)
 
@@ -41,7 +45,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (org-plus-contrib navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -134,6 +138,8 @@
 	    (define-key my-prefix-map (kbd "C-x") 'windmove-down)
 	    (define-key my-prefix-map (kbd "C-a") 'windmove-left)
 	    (define-key my-prefix-map (kbd "C-d") 'windmove-right)))
+;;; set up org mode agenda
+(setq org-agenda-files (list "~/Documents/agenda/research-agenda.org"))
 
 ;; outshine
 ;;; set outshine prefix key
@@ -200,6 +206,8 @@
 ;; hooks
 ;;; add outline minor mode to LaTeX-mode
 (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+;;; and to r-mode
+(add-hook 'ess-mode-hook 'outline-minor-mode)
 ;;; disable auto-fill-mode in fundamental mode
 (add-hook 'fundamental-mode-hook (lambda () (auto-fill-mode -1)))
 ;;; and in latex-mode

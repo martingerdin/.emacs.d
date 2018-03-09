@@ -1,0 +1,2 @@
+* Tasks
+** TODO Rewrite init file using outline

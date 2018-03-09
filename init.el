@@ -20,7 +20,6 @@
 (add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/addins/polymode")
 (add-to-list 'load-path "~/.emacs.d/addins/polymode/modes")
-(add-to-list 'load-path "~/.emacs.d/org/org-mode/lisp")
 (add-to-list 'load-path "/usr/local/opt/emacs-mac/share/emacs/site-lisp/ess/")
 
 ;; the following four sections need to go in this order
@@ -45,7 +44,7 @@
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (org-plus-contrib navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -140,6 +139,12 @@
 	    (define-key my-prefix-map (kbd "C-d") 'windmove-right)))
 ;;; set up org mode agenda
 (setq org-agenda-files (list "~/Documents/agenda/research-agenda.org"))
+;;; enable babel languages
+(org-babel-do-load-languages
+   'org-babel-load-languages
+   '((R . t)
+     (latex . t)
+     (emacs-lisp . t)))
 
 ;; outshine
 ;;; set outshine prefix key
@@ -264,6 +269,26 @@
 (define-key ess-mode-map "C-x l" 'ess-eval-line-and-step)
 (define-key ess-mode-map "C-x p" 'ess-eval-function-or-paragraph-and-step)
 (define-key ess-mode-map "C-x r" 'ess-eval-region)
+
+;; set up spell check
+;;; stolen from http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
+;; find aspell and hunspell automatically
+(cond
+ ;; try hunspell at first
+  ;; if hunspell does NOT exist, use aspell
+ ((executable-find "hunspell")
+  (setq ispell-program-name "hunspell")
+  (setq ispell-local-dictionary "en_US")
+  (setq ispell-local-dictionary-alist
+        ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+        ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)
+          )))
+
+ ((executable-find "aspell")
+  (setq ispell-program-name "aspell")
+  ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
+  (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
 
 ;; set up tex engine
 (setq-default TeX-engine 'xetex)

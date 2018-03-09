@@ -1,2 +1,2 @@
-;; org-persist.el - ITs-MacBook-Pro.local at <2018-02-15 Thu 12:06>
-(setq stored-clock-history '(("/Users/martin/Documents/agenda/research-agenda.org" . 4239) ("/Users/martin/Documents/agenda/research-agenda.org" . 4446) ("/Users/martin/Documents/agenda/research-agenda.org" . 2745) ("/Users/martin/Documents/agenda/research-agenda.org" . 3095) ("/Users/martin/Documents/agenda/research-agenda.org" . 2502)))
+;; org-persist.el - ITs-MacBook-Pro.local at <2018-03-09 Fri 13:55>
+(setq stored-clock-history '(("/Users/martin/Documents/agenda/research-agenda.org" . 3604) ("/Users/martin/Documents/agenda/research-agenda.org" . 3988) ("/Users/martin/Documents/agenda/research-agenda.org" . 4506) ("/Users/martin/Documents/agenda/research-agenda.org" . 4307) ("/Users/martin/Documents/agenda/research-agenda.org" . 6082)))

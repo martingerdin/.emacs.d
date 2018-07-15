@@ -20,6 +20,10 @@
 (add-to-list 'load-path "~/.emacs.d/addins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/addins/polymode")
 (add-to-list 'load-path "~/.emacs.d/addins/polymode/modes")
+(add-to-list 'load-path "~/.emacs.d/addins/elpy")
+(add-to-list 'load-path "~/.emacs.d/addins/pyvenv")
+(add-to-list 'load-path "~/.emacs.d/addins/find-file-in-project")
+(add-to-list 'load-path "~/.emacs.d/addins/Highlight-Indentation-for-Emacs")
 (add-to-list 'load-path "/usr/local/opt/emacs-mac/share/emacs/site-lisp/ess/")
 
 ;; the following four sections need to go in this order
@@ -39,12 +43,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-safe-themes
+   (quote
+    ("ba3c5da197000aaf2f5514bef814b4d8bf1b6de7309b9fcd682ec26aa6a16fd2" default)))
  '(delete-selection-mode t)
+ '(latex-run-command "pdflatex")
+ '(org-agenda-files
+   (quote
+    ("~/Documents/research/temporary/phd-students/siddarth-david/study-II/README.org" "~/Documents/research/temporary/studies-and-projects/current/superlearner-vs-clinicians-ludde/code/github/todo.org" "~/Documents/research/temporary/studies-and-projects/current/outcome-prevalence-calibration-intercept-johanna/README.org" "~/Documents/research/temporary/studies-and-projects/current/superlearner-vs-clinicians-ludde/README.org" "~/Documents/research/temporary/studies-and-projects/current/time-to-gcs-gabriella/README.org" "~/Documents/research/temporary/studies-and-projects/current/time-to-ct-erika/README.org" "~/Documents/research/temporary/studies-and-projects/current/ct-associated-mortality-tobias/README.org" "~/Documents/research/temporary/phd-students/siddarth-david/study-I/README.org" "~/Documents/research/temporary/studies-and-projects/current/early-vs-no-or-delayed-intubation-wissam/README.org" "~/Documents/research/temporary/studies-and-projects/current/institutional-implementation-audit-filters/README.org" "~/Documents/research/temporary/phd-students/siddarth-david/todo/todo.org" "~/Documents/research/temporary/studies-and-projects/proposals/beyond-the-buzz/applications/young-scholar-grant/4-synopsis-proposed-activity/4-synopsis-proposed-activity.org" "~/Documents/agenda/research-agenda.org")))
+ '(org-image-actual-width nil)
  '(org-table-convert-region-max-lines 9999)
  '(org-use-speed-commands t)
  '(package-selected-packages
    (quote
-    (navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
+    (list-packages-ext org-ref navi-mode font-lock-studio outshine auctex fill-column-indicator markdown-mode yasnippet company-auctex company-statistics pdf-tools company magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -57,9 +71,11 @@
 ;; company-auctex
 ;; company-statistics
 ;; elpy
+;; find-file-in-project
 ;; ess
 ;; exec-path-from-shell
 ;; fill-column-indicator
+;; Highlight-Indentation-for-Emacs
 ;; magit
 ;; markdown-mode
 ;; navi-mode
@@ -67,6 +83,7 @@
 ;; outshine
 ;; pdf-tools
 ;; polymode
+;; pyvenv
 ;; yasnippet
 
 ;; auctex
@@ -106,6 +123,22 @@
 
 ;; doc-view
 (setq doc-view-resolution 300)
+
+;; elpy
+;;; require necessary packages
+(require 'elpy)
+(require 'pyvenv)
+(require 'find-file-in-project)
+(require 'highlight-indentation)
+;;; enable elpy
+(elpy-enable)
+;;; set python shell interpreter
+(setq python-shell-interpreter "python"
+      python-shell-interpreter-args "-i")
+;;; attempt to get rid of native completion setup warning, at this point not successful
+(setq python-shell-prompt-detect-failure-warning nil)
+;;; add C-return to elpy mode map, perhaps not necessary
+(define-key elpy-mode-map (kbd "<C-return>") 'elpy-shell-send-statement-and-step)
 
 ;; ess
 (require 'ess-site)

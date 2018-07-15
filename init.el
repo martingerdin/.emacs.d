@@ -56,12 +56,14 @@
 ;; company
 ;; company-auctex
 ;; company-statistics
+;; elpy
 ;; ess
 ;; exec-path-from-shell
 ;; fill-column-indicator
 ;; magit
 ;; markdown-mode
 ;; navi-mode
+;; org-ref
 ;; outshine
 ;; pdf-tools
 ;; polymode
@@ -88,6 +90,12 @@
         (company-complete-common)
       (indent-according-to-mode)))
 (global-set-key [C-tab] 'complete-or-indent)
+;;; begin commands
+(setq company-begin-commands '(self-insert-command org-self-insert-command c-electric-lt-gt c-electric-colon))
+;;; capf
+(defun my-org-mode-hook ()
+  (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+(add-hook 'org-mode-hook #'my-org-mode-hook)
 
 ;; company-auctex
 (require 'company-auctex)
@@ -145,6 +153,20 @@
    '((R . t)
      (latex . t)
      (emacs-lisp . t)))
+;;; change compiler from latex to latexmk
+(setq org-latex-pdf-process (list "latexmk -f -pdf %f"))
+;;; add custom easy templates
+(add-to-list 'org-structure-template-alist
+             '("RR" "#+TITLE:README\n#+OPTIONS: author:nil date:nil toc:nil num:nil \n#+TODO: TODO MEETING Me Someoneelse | DONE \n* Short summary \n* Aim and research questions \n** Aim \n** Research questions \n* Ethics \n* Tasks")
+	     '("bib" ":PROPERTIES: \n :BTYPE: article|book \n :AUTHOR: Firstname Surname and Firstname Surname and ... \n:JOURNAL: \n:VOLUME: \n:NUMBER: 3 \n:YEAR: \n:MONTH: January \n:CUSTOM_ID: \n  :END:"))
+
+;; org-ref
+;;; set default bibliography
+(setq reftex-default-bibliography '("~/Documents/research/temporary/bibtex/library.bib"))
+;;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes ""
+      org-ref-default-bibliography '("~/Documents/research/temporary/bibtex/library.bib")
+      org-ref-pdf-directory "")
 
 ;; outshine
 ;;; set outshine prefix key

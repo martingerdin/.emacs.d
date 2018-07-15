@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("joi"
+(("rl"
+ (filename . "~/Documents/research/temporary/reading-list/reading-list.org")
+ (front-context-string . "#+TODO: TODO TOR")
+ (rear-context-string)
+ (position . 1))
+("joi"
  (filename . "~/Documents/research/temporary/journals-of-interest/journals-of-interest.org")
  (front-context-string . "* Trauma\n* Criti")
  (rear-context-string)

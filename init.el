@@ -251,6 +251,9 @@
 (define-key my-prefix-map (kbd "C-d") 'windmove-right)
 ;;; save with C-x s instead of C-x C-s
 (global-set-key (kbd "C-x s") 'save-buffer)
+;;; ispell
+(global-set-key (kbd "M-*") 'ispell-word)
+(global-set-key (kbd "M-^") 'flyspell-region)
 
 ;; set up r
 ;; set LANG to avoid r resorting to C
@@ -278,17 +281,19 @@
   ;; if hunspell does NOT exist, use aspell
  ((executable-find "hunspell")
   (setq ispell-program-name "hunspell")
-  (setq ispell-local-dictionary "en_US")
+  (setq ispell-local-dictionary "en_GB-large")
   (setq ispell-local-dictionary-alist
         ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)
+        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB-large") nil utf-8)
           )))
 
  ((executable-find "aspell")
   (setq ispell-program-name "aspell")
   ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
   (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))))
+;;; ignore specific regions
+(add-to-list 'ispell-skip-region-alist '("^#+BEGIN_SRC" . "^#+END_SRC"))
 
 ;; set up tex engine
 (setq-default TeX-engine 'xetex)

@@ -11,6 +11,8 @@ macOS High Sierra version 10.13.5
 ## Theme
 [Zenburn](https://github.com/bbatsov/zenburn-emacs)
 
+![Theme screen shot](full-screen-shot.png)
+
 ## Packages
 * [AUCTeX](https://www.gnu.org/software/auctex/)
 * [company-mode](http://company-mode.github.io)

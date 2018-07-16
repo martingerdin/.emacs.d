@@ -71,8 +71,8 @@
 ;; company-auctex
 ;; company-statistics
 ;; elpy
-;; find-file-in-project
 ;; ess
+;; find-file-in-project
 ;; exec-path-from-shell
 ;; fill-column-indicator
 ;; Highlight-Indentation-for-Emacs

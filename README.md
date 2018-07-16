@@ -13,6 +13,35 @@ macOS High Sierra version 10.13.5
 
 ![Theme screen shot](full-screen-shot.png)
 
+The annoying white line in the middle present in the default setup was removed
+with:
+
+```lisp
+(set-face-attribute 'vertical-border nil
+		    :foreground (face-background 'default))
+```
+
+Fringes were hidden by modifing the fringe colour:
+
+```lisp
+(set-face-attribute 'fringe nil
+		    :foreground (face-foreground 'default)
+		    :background (face-background 'default))
+```
+
+The font was changed to Courier New:
+
+```lisp
+(set-face-font 'default "-outline-Courier New-normal-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
+```
+
+Both the menu and tool bars were removed:
+
+```lisp
+(tool-bar-mode -1)
+(toggle-scroll-bar -1)
+```
+
 ## Packages
 * [AUCTeX](https://www.gnu.org/software/auctex/)
 * [company-mode](http://company-mode.github.io)

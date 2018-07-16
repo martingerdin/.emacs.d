@@ -75,7 +75,9 @@
 ;; find-file-in-project
 ;; exec-path-from-shell
 ;; fill-column-indicator
+;; font-lock-studio
 ;; Highlight-Indentation-for-Emacs
+;; let-alist
 ;; magit
 ;; markdown-mode
 ;; navi-mode

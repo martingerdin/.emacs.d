@@ -11,6 +11,9 @@
 ;; from https://github.com/railwaycat/homebrew-emacsmacport
 ;; installed using brew cask to help spotlight find it
 
+;; start server
+(server-start)
+
 ;; start with shell only
 (shell)
 (delete-other-windows)
@@ -360,3 +363,8 @@
 (toggle-frame-fullscreen)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+;;; set custom shell
+(setq-default explicit-shell-file-name "/usr/local/bin/bash")
+
+

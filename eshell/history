@@ -1,2 +1,12 @@
 ls
 emacs DESCRIPTION ## Update version x.y.z-9000 > x.y.z+1
+ls
+cd ~/
+ls
+cd test/gren-release-notes/
+ls
+gren changelog --data-source=commits --override
+source ~/.bashrc 
+gren changelog --data-source=commits --override
+gren changelog --data-source=commits --override
+echo $PATH
